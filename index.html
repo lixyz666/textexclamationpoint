@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一键生成文字后面感叹号</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="center">
+        <div id="app1">
+        <p>{{ randomText }}</p>
+    </div>
+    <h2>请输入你要的文字</h2>
+    <table><input type="text" id="gt0"></table>
+    <button onclick="sc()">开始生成</button>
+    <div id="result"></div>
+    <a href="https://lixuanzer.top">去往中转</a>
+    <br>
+    <p>当前时间</p>
+    <div id="app">
+    <p>{{ currentTime }}</p>
+</div>
+    <br>
+    <p></p>
+    </div>
+    <script>
+        new Vue({
+    el: '#app',
+    data: {
+        currentTime: ''
+    },
+    created() {
+        this.getCurrentTime();
+    },
+    methods: {
+        getCurrentTime() {
+            setInterval(() => {
+                this.currentTime = new Date().toLocaleString();
+            }, 1000);
+        }
+    }
+});
+        new Vue({
+    el: '#app1',
+            data: {
+                texts: [
+                    "我不是我，我就是我，你不是你，你就是你，啊哈哈哈哈",
+                    "好好好，这么玩是吧",
+                    "你先开的",
+                    "闪光dance",
+                    "WDNMD",
+                    "服了你这个老六了",
+                    "只要有时间，我会忆起她的面容",
+                    "梦想不能随机,随机老子就要应变",
+                    "随意随性随缘， 随你随他随便， 随风随雨随流， 随时随地随天。",
+                    "哎呀，这个表情，是被我说中了吗？",
+                    "如果你从未在世上出现，我可能已经成了一个和尚"
+                ],
+                randomText: ''
+            },
+            methods: {
+                generateRandomText() {
+                    var randomIndex = Math.floor(Math.random() * this.texts.length);
+                    this.randomText = this.texts[randomIndex];
+                }
+            },
+            created() {
+                this.generateRandomText();
+            }
+        });
+    </script>
+</body>
+</html>
